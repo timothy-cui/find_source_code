@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- 公共依赖 -->
+    <parent>
+        <groupId>com.find.source.code</groupId>
+        <artifactId>find_source_code</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>spring_cloud_config</artifactId>
+    <name>Config Service</name>
+    <description>Config Service demo project</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- 配置服务器将要使用的引导类 -->
+        <start-calss>com.thoughtmechanix.confsvr.ConfigServerApplication</start-calss>
+        <java.version>1.8</java.version>
+        <docker.image.name>johncarnell/tmx-confsvr</docker.image.name>
+        <docker.image.tag>chapter3</docker.image.tag>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-server</artifactId>
+        </dependency>
+        <!-- 引入Eureka依赖, 以便可以使用Eureka注册服务 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>
