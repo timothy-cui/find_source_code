@@ -1,6 +1,6 @@
 package com.thoughtmechanix.zuulsvr.filters;
 
-
+import brave.Tracer;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import org.slf4j.Logger;
@@ -13,6 +13,9 @@ public class ResponseFilter extends ZuulFilter{
     private static final int  FILTER_ORDER=1;
     private static final boolean  SHOULD_FILTER=true;
     private static final Logger logger = LoggerFactory.getLogger(ResponseFilter.class);
+
+    @Autowired
+    Tracer tracer;
     
     @Autowired
     FilterUtils filterUtils;
@@ -38,6 +41,9 @@ public class ResponseFilter extends ZuulFilter{
 
         logger.info("Adding the correlation id to the outbound headers. {}", filterUtils.getCorrelationId());
         ctx.getResponse().addHeader(FilterUtils.CORRELATION_ID, filterUtils.getCorrelationId());
+
+        // 通过sleuth获取tracerId返回到response中。
+        ctx.getResponse().addHeader("tmx-correlation-id", tracer.currentSpan().context().traceIdString());
 
         logger.info("Completing outgoing request for {}.", ctx.getRequest().getRequestURI());
 

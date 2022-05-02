@@ -20,6 +20,7 @@
         <module>spring_cloud_zuul</module>
         <module>authorization_server</module>
         <module>spring_cloud_route</module>
+        <module>zipkin_server</module>
     </modules>
 
     <properties>
