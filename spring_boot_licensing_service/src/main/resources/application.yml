@@ -1,10 +1,23 @@
-server:
-  port: 8080
+#server:
+#  port: 8080
 
-security:
-  oauth2:
-    resource:
-      userInfoUri: http://localhost:8901/auth/user
+#security:
+#  oauth2:
+#    resource:
+#      userInfoUri: http://localhost:8901/auth/user
+
+spring:
+  cloud:
+    stream:
+      bindings:
+        inboundOrgChanges:
+          destination: orgChangeTopic
+          content-type: application/json
+          group: licensingGroup
+      kafka:
+        binder:
+          zkNodes: localhost
+          brokers: localhost
 
 eureka:
   instance:

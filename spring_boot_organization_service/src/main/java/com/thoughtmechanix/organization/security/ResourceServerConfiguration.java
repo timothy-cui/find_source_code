@@ -1,4 +1,4 @@
-package organization.security;
+package com.thoughtmechanix.organization.security;
 
 
 import org.springframework.context.annotation.Configuration;

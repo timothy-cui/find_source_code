@@ -1,8 +1,8 @@
-package organization.repository;
+package com.thoughtmechanix.organization.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import organization.model.Organization;
+import com.thoughtmechanix.organization.model.Organization;
 
 import java.util.Optional;
 

@@ -1,4 +1,4 @@
-package organization.model;
+package com.thoughtmechanix.organization.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
