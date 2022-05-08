@@ -1,6 +1,8 @@
 spring:
   application:
     name: licensingservice
+  zipkin:
+    baseUrl: localhost:9411
   profiles:
     active:
       default
